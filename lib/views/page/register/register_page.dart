@@ -68,7 +68,7 @@ class RegisterPage extends StatelessWidget{
                         Text(
                           "Welcome to The Bank of The Future.\nManage and track your accounts on\nthe go.",
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.black87,
                               fontSize: 18,
                               fontWeight: FontWeight.bold
                           ),
@@ -80,13 +80,18 @@ class RegisterPage extends StatelessWidget{
                             color: Colors.white,
                             borderRadius: BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12))
                           ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                filled: true,
-                                fillColor: Colors.grey[100],
-                                labelText: 'Email',
-                                border: OutlineInputBorder(),
-                                prefixIcon: Icon(Icons.email),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                            decoration: BoxDecoration(
+                              color: Colors.grey[100],
+                              borderRadius: BorderRadius.circular(8)
+                            ),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  hintText: 'Email',
+                                  border: InputBorder.none,
+                                  icon: Icon(Icons.email, color: Colors.grey),
+                              ),
                             ),
                           ),
                         )

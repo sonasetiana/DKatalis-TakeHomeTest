@@ -11,13 +11,34 @@ class InputPassword extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.blue,
       appBar: AppBar(
         title: Text("Create Account"),
         elevation: 0.0,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          TimeLine(1, 4)
+          TimeLine(1, 4),
+          Expanded(
+              child: Container(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Create Password",
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      "Password will be used to login to account",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
+              )
+          )
         ],
       ),
       floatingActionButton: NextButton(() => {
