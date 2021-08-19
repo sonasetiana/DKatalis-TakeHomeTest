@@ -121,7 +121,7 @@ class _ScheduleVideoCallState extends State<ScheduleVideoCall> with TickerProvid
                                   curve: const _PulsateCurve(),
                                 ),
                               ),
-                              child: Icon(Icons.calendar_today, color: Colors.blue, size: 24,),
+                              child: Icon(Icons.insert_invitation, color: Colors.blue, size: 24,),
                             ),
                           ),
                         ),

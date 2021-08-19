@@ -5,7 +5,18 @@ import 'package:dKatalis/views/widget/input_widget.dart';
 import 'package:dKatalis/views/widget/time_line.dart';
 import 'package:flutter/material.dart';
 
-class InputPassword extends StatelessWidget{
+class InputPassword extends StatefulWidget{
+  @override
+  _InputPasswordSate createState() => _InputPasswordSate();
+
+}
+
+class _InputPasswordSate extends State<InputPassword>{
+
+  late String _complexity;
+  int _step = 0;
+  bool _visiblePassword = false;
+  IconData _icon = Icons.visibility;
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +49,20 @@ class InputPassword extends StatelessWidget{
                           borderRadius: BorderRadius.circular(8)
                       ),
                       child: TextField(
-                        obscureText: true,
+                        obscureText: !_visiblePassword,
                         decoration: InputDecoration(
                           hintText: 'Create Password',
                           border: InputBorder.none,
                           suffixIcon: IconButton(
-                            icon: Icon(Icons.visibility, color: Colors.blue),
-                            onPressed: (){Navigator.of(context).pop();},
+                            icon: Icon(
+                                !_visiblePassword ? Icons.visibility : Icons.visibility_off,
+                                color: !_visiblePassword ? Colors.blue:Colors.grey),
+                            onPressed: (){
+                              setState(() {
+                                _icon = !_visiblePassword ? Icons.visibility : Icons.visibility_off;
+                                _visiblePassword = !_visiblePassword;
+                              });
+                            },
                           ),
                         ),
                       ),
@@ -63,7 +81,7 @@ class InputPassword extends StatelessWidget{
                         )
                     ),
                     SizedBox(height: 48,),
-                    PasswordRegexInfo(0)
+                    PasswordRegexInfo(_step)
                   ],
                 ),
               )
