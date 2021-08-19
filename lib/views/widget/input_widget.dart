@@ -2,6 +2,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class PasswordRegexInfo extends StatelessWidget{
 
@@ -51,4 +52,29 @@ class PasswordRegexInfo extends StatelessWidget{
       ],
     );
   }
+}
+
+class WordingText extends StatelessWidget{
+  final String title, description;
+
+  WordingText(this.title, this.description);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
+        ),
+        SizedBox(height: 8),
+        Text(
+          description,
+          style: TextStyle(color: Colors.white60),
+        ),
+      ],
+    );
+  }
+
 }

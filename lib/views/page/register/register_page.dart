@@ -24,7 +24,6 @@ class RegisterPage extends StatelessWidget{
       body: Container(
         color: Colors.blue,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TimeLine(0, 4),
             Expanded(

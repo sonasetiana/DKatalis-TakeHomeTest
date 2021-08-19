@@ -1,8 +1,8 @@
 import 'package:dKatalis/utils/navigation_utils.dart';
 import 'package:dKatalis/views/page/register/schedule_video_call.dart';
 import 'package:dKatalis/views/widget/button_widget.dart';
+import 'package:dKatalis/views/widget/input_widget.dart';
 import 'package:dKatalis/views/widget/time_line.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PersonalInformation extends StatefulWidget{
@@ -44,14 +44,9 @@ class _PersonalInformationState extends State<PersonalInformation>{
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Personal Information",
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      "Please fill in the information below and your goal\nfor digital saving.",
-                      style: TextStyle(color: Colors.white60),
+                    WordingText(
+                        "Personal Information",
+                        "Please fill in the information below and your goal\nfor digital saving."
                     ),
                     SizedBox(height: 32),
                     _fieldDropdownMenu("Goal for activation", selectedActivation, (item) => {
