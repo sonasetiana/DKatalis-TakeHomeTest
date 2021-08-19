@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:dKatalis/utils/navigation_utils.dart';
 import 'package:dKatalis/views/page/register/input_password.dart';
+import 'package:dKatalis/views/widget/button_widget.dart';
 import 'package:dKatalis/views/widget/time_line.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -96,21 +98,10 @@ class RegisterPage extends StatelessWidget{
           ],
         ),
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                primary: Colors.blue[200],
-                minimumSize: Size(double.infinity, 56)
-            ),
-            child: Text("Next"),
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context){
-                return InputPassword();
-              }));
-            }),
-      ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat
+      floatingActionButton: NextButton(() => {
+        navigatePush(context, InputPassword())
+      }),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat
     );
   }
 
