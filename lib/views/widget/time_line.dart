@@ -12,7 +12,7 @@ class TimeLine extends StatelessWidget{
   Widget build(BuildContext context) {
      return Container(
        padding: const EdgeInsets.only(
-         left: 16.0, right: 16.0, bottom: 48.0
+         left: 16.0, right: 16.0
        ),
        color: Colors.blue,
        child: timeView(),
@@ -25,7 +25,7 @@ class TimeLine extends StatelessWidget{
     int index = 0;
     for(var i = 0; i < count + (count-1); i++){
       if(i % 2 == 0){
-        widgets.add(step > index ? stepBox(titles[index],Colors.green):stepBox(titles[index], Colors.white));
+        widgets.add(step > index ? stepBox(titles[index],Colors.green):stepBox(titles[index], Colors.grey.shade200));
         index++;
       }else{
         widgets.add(stepLine());
