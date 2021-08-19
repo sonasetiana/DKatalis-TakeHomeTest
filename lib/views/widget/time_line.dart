@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TimeLine extends StatelessWidget{
-  final List<String> title;
   final int step;
+  final int count;
 
-  TimeLine(this.step, this.title);
+  TimeLine(this.step, this.count);
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +20,12 @@ class TimeLine extends StatelessWidget{
   }
 
   Widget timeView(){
+    var titles = getTitles();
     List<Widget> widgets = <Widget>[];
     int index = 0;
-    for(var i = 0; i < title.length + (title.length-1); i++){
+    for(var i = 0; i < count + (count-1); i++){
       if(i % 2 == 0){
-        widgets.add(step > index ? stepBox(title[index],Colors.green):stepBox(title[index], Colors.white));
+        widgets.add(step > index ? stepBox(titles[index],Colors.green):stepBox(titles[index], Colors.white));
         index++;
       }else{
         widgets.add(stepLine());
@@ -63,6 +64,14 @@ class TimeLine extends StatelessWidget{
       height: 3.0,
       width: 45.0,
     );
+  }
+
+  List<String> getTitles(){
+    List<String> titles = <String>[];
+    for(var i = 0; i < count; i++){
+      titles.add("${i + 1}");
+    }
+    return titles;
   }
 
 }

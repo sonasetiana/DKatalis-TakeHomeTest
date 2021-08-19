@@ -1,7 +1,8 @@
 import 'dart:ffi';
 
+import 'package:dKatalis/views/page/register/register_page.dart';
+import 'package:dKatalis/views/widget/time_line.dart';
 import 'package:flutter/material.dart';
-import 'package:workspace/views/widget/time_line.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,22 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Example(),
-    );
-  }
-}
-
-class Example extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(elevation: 0.0,),
-      body: Column(
-        children: [
-          TimeLine(1, ["1", "2", "3", "4"])
-        ],
-      ),
+      home: RegisterPage(),
     );
   }
 }
