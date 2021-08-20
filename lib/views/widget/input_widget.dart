@@ -6,7 +6,7 @@ import 'package:flutter/rendering.dart';
 
 class PasswordRegexInfo extends StatelessWidget{
 
-  final int step;
+  final String step;
 
   PasswordRegexInfo(this.step);
 
@@ -15,22 +15,22 @@ class PasswordRegexInfo extends StatelessWidget{
     double _spacing = 20;
     return Row(
       children: [
-        _label(0, "a", "Lowercase"),
+        _label("Low", "a", "Lowercase"),
         SizedBox(width: _spacing,),
-        _label(1, "A", "Uppercase"),
+        _label("Good", "A", "Uppercase"),
         SizedBox(width: _spacing,),
-        _label(2, "123", "Number"),
+        _label("Strong", "123", "Number"),
         SizedBox(width: _spacing,),
-        _label(3, "9+", "Characters")
+        _label("Weak", "9+", "Characters")
       ],
     );
   }
 
-  _label(int num,String symbol, String description){
+  _label(String path, String symbol, String description){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        step > num ?
+        step.contains(path) ?
         Container(
             height: 36,
             width: 36,

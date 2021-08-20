@@ -13,10 +13,9 @@ class InputPassword extends StatefulWidget{
 
 class _InputPasswordSate extends State<InputPassword>{
 
-  late String _complexity;
-  int _step = 0;
+  String _complexity = "";
+  String _step = "";
   bool _visiblePassword = false;
-  IconData _icon = Icons.visibility;
 
   @override
   Widget build(BuildContext context) {
@@ -59,12 +58,38 @@ class _InputPasswordSate extends State<InputPassword>{
                                 color: !_visiblePassword ? Colors.blue:Colors.grey),
                             onPressed: (){
                               setState(() {
-                                _icon = !_visiblePassword ? Icons.visibility : Icons.visibility_off;
                                 _visiblePassword = !_visiblePassword;
                               });
                             },
                           ),
                         ),
+                        onChanged: (text){
+                          setState(() {
+                            _step = "";
+                            _complexity = "";
+
+                            if(_valid(text, r"(?=.*[a-z])\w+")){
+                              _complexity = "Low";
+                              _step += "Low";
+                            }
+
+                            if(_valid(text, r"(?=.*?[A-Z])\w+")){
+                              _complexity = "Good";
+                              _step += "Good";
+                            }
+
+                            if(_valid(text, r"(?=.*?[0-9])\w+")){
+                              _complexity = "Strong";
+                              _step += "Strong";
+                            }
+
+                            if(text.length > 9){
+                              _complexity = "Very Weak";
+                              _step += "Weak";
+                            }
+
+                          });
+                        },
                       ),
                     ),
                     SizedBox(height: 16,),
@@ -74,8 +99,8 @@ class _InputPasswordSate extends State<InputPassword>{
                             style: TextStyle(color: Colors.white60),
                           children: [
                             TextSpan(
-                                text: "Very Weak",
-                                style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold)
+                                text: _complexity,
+                                style: TextStyle(color: _validColor(_complexity), fontWeight: FontWeight.bold)
                             )
                           ]
                         )
@@ -94,4 +119,22 @@ class _InputPasswordSate extends State<InputPassword>{
     floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat
     );
   }
+
+  bool _valid(String value, String  pattern){
+    RegExp regExp = new RegExp(pattern);
+    return regExp.hasMatch(value);
+  }
+  
+  Color _validColor(String text){
+    Color c = Colors.red;
+    if(text == "Good" || text == "Strong"){
+      c = Colors.green;
+    }
+    if(text == "Very Weak"){
+      c = Colors.amber;
+    }
+    return c;
+  }
+  
+  
 }
