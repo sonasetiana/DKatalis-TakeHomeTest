@@ -1,7 +1,5 @@
-import 'dart:ffi';
 
 import 'package:dKatalis/views/page/register/register_page.dart';
-import 'package:dKatalis/views/widget/time_line.dart';
 import 'package:flutter/material.dart';
 
 void main() {
